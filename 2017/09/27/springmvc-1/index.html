@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java,springMvc,spring," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LeiYang的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="(function(){     var bp = document.createElement(&apos;script&apos;);     var curProtocol = window.location.protocol.split(&apos;:&apos;)[0];     if (curProtocol === &apos;https&apos;) {         bp.src = &apos;https://zz.bdstatic.com/">
+<meta name="keywords" content="java,springMvc,spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springmvc搭建JavaWeb应用">
+<meta property="og:url" content="http://www.leiyang.group/2017/09/27/springmvc-1/index.html">
+<meta property="og:site_name" content="LeiYang的博客">
+<meta property="og:description" content="(function(){     var bp = document.createElement(&apos;script&apos;);     var curProtocol = window.location.protocol.split(&apos;:&apos;)[0];     if (curProtocol === &apos;https&apos;) {         bp.src = &apos;https://zz.bdstatic.com/">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/ly1836/img/blob/master/springmvc/1.png?raw=true">
+<meta property="og:image" content="https://github.com/ly1836/img/blob/master/springmvc/2.png?raw=true">
+<meta property="og:image" content="https://github.com/ly1836/img/blob/master/springmvc/3.png?raw=true">
+<meta property="og:image" content="https://github.com/ly1836/img/blob/master/springmvc/4.png?raw=true">
+<meta property="og:image" content="https://github.com/ly1836/img/blob/master/springmvc/7.png?raw=true">
+<meta property="og:image" content="https://github.com/ly1836/img/blob/master/springmvc/9.png?raw=true">
+<meta property="og:image" content="https://github.com/ly1836/img/blob/master/springmvc/8.png?raw=true">
+<meta property="og:image" content="https://github.com/ly1836/img/blob/master/springmvc/10.png?raw=true">
+<meta property="og:updated_time" content="2018-04-22T06:41:47.302Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="springmvc搭建JavaWeb应用">
+<meta name="twitter:description" content="(function(){     var bp = document.createElement(&apos;script&apos;);     var curProtocol = window.location.protocol.split(&apos;:&apos;)[0];     if (curProtocol === &apos;https&apos;) {         bp.src = &apos;https://zz.bdstatic.com/">
+<meta name="twitter:image" content="https://github.com/ly1836/img/blob/master/springmvc/1.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.leiyang.group/2017/09/27/springmvc-1/"/>
+
+
+
+
+
+  <title>springmvc搭建JavaWeb应用 | LeiYang的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a0e8663aecb9b070b35645059a1cebbb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/ly1836"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LeiYang的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.leiyang.group/2017/09/27/springmvc-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LeiYang">
+      <meta itemprop="description" content="少年心事当拿云,
+谁念幽寒坐呜呃">
+      <meta itemprop="image" content="/img/portrait.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LeiYang的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">springmvc搭建JavaWeb应用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-27T15:26:44+08:00">
+                2017-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/09/27/springmvc-1/" class="leancloud_visitors" data-flag-title="springmvc搭建JavaWeb应用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a0e8663aecb9b070b35645059a1cebbb";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<p>本次记录利用springmvc框架搭建web应用，用到的IDE工具为 IntelliJ IDEA 2017.1.4 x64</p>
+<h1 id="一-新建项目-因为本次版本管理工具采用maven-左侧选中maven-选中-Create-from-archetype-如下图选中cocoon-22-archetype-webapp构建web应用"><a href="#一-新建项目-因为本次版本管理工具采用maven-左侧选中maven-选中-Create-from-archetype-如下图选中cocoon-22-archetype-webapp构建web应用" class="headerlink" title="一:新建项目,因为本次版本管理工具采用maven,左侧选中maven,选中[Create from archetype],如下图选中cocoon-22-archetype-webapp构建web应用"></a>一:新建项目,因为本次版本管理工具采用maven,左侧选中maven,选中<span style="background-color: #ccc;">[Create from archetype]</span>,如下图选中cocoon-22-archetype-webapp构建web应用</h1><a id="more"></a>
+<p><img src="https://github.com/ly1836/img/blob/master/springmvc/1.png?raw=true"></p>
+<h1 id="二-填写maven的GroupId和ArtifactId"><a href="#二-填写maven的GroupId和ArtifactId" class="headerlink" title="二:填写maven的GroupId和ArtifactId"></a>二:填写maven的GroupId和ArtifactId</h1><p><img src="https://github.com/ly1836/img/blob/master/springmvc/2.png?raw=true"></p>
+<h1 id="三-选择当前计算机安装的mavem安装位置及配置文件地址和本地仓库位置"><a href="#三-选择当前计算机安装的mavem安装位置及配置文件地址和本地仓库位置" class="headerlink" title="三:选择当前计算机安装的mavem安装位置及配置文件地址和本地仓库位置"></a>三:选择当前计算机安装的mavem安装位置及配置文件地址和本地仓库位置</h1><p><img src="https://github.com/ly1836/img/blob/master/springmvc/3.png?raw=true"></p>
+<h1 id="四-在main目录下新建java文件夹，用于存放java代码，在project-structure-中设置java文件夹为Source"><a href="#四-在main目录下新建java文件夹，用于存放java代码，在project-structure-中设置java文件夹为Source" class="headerlink" title="四:在main目录下新建java文件夹，用于存放java代码，在project structure 中设置java文件夹为Source"></a>四:在main目录下新建java文件夹，用于存放java代码，在project structure 中设置java文件夹为Source</h1><p><img src="https://github.com/ly1836/img/blob/master/springmvc/4.png?raw=true"></p>
+<h1 id="五-在webapp-WEB-INF-下新建spring-mvc-servlet-xml文件-新建view文件夹用于存放视图，当前项目结构如下图"><a href="#五-在webapp-WEB-INF-下新建spring-mvc-servlet-xml文件-新建view文件夹用于存放视图，当前项目结构如下图" class="headerlink" title="五:在webapp/WEB-INF/下新建spring-mvc-servlet.xml文件,新建view文件夹用于存放视图，当前项目结构如下图:"></a>五:在webapp/WEB-INF/下新建spring-mvc-servlet.xml文件,新建view文件夹用于存放视图，当前项目结构如下图:</h1><p><img src="https://github.com/ly1836/img/blob/master/springmvc/7.png?raw=true"></p>
+<h1 id="六-在pom-xml中加入springmvc所需的包，如下引完包之后用maven-clear下"><a href="#六-在pom-xml中加入springmvc所需的包，如下引完包之后用maven-clear下" class="headerlink" title="六:在pom.xml中加入springmvc所需的包，如下引完包之后用maven clear下"></a>六:在pom.xml中加入springmvc所需的包，如下引完包之后用maven clear下</h1><h2 id="1-在project标签下加入如下定义"><a href="#1-在project标签下加入如下定义" class="headerlink" title="(1)在project标签下加入如下定义"></a>(1)在<span style="background-color: #ccc;">project</span>标签下加入如下定义</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- spring 当做springmvc的父模块 --&gt;</span><br><span class="line">  &lt;parent&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.5.8.RELEASE&lt;/version&gt;&lt;!--  --&gt;</span><br><span class="line">  &lt;/parent&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="2-在dependencies标签下加入springmvc的所需jar包及jsp标准库和日志库"><a href="#2-在dependencies标签下加入springmvc的所需jar包及jsp标准库和日志库" class="headerlink" title="(2)在dependencies标签下加入springmvc的所需jar包及jsp标准库和日志库"></a>(2)在<span style="background-color: #ccc;">dependencies</span>标签下加入springmvc的所需jar包及jsp标准库和日志库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- spring mvc --&gt;</span><br><span class="line"> &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;</span><br><span class="line">      &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;!-- jsp标准标签库 --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.glassfish&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;javax.servlet.jsp.jstl&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;3.0.1&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;log4j-slf4j-impl&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;log4j-web&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="七-在web-xml中配置springmvc的核心过滤器-用于在web程序初始化的时候启动springmvc"><a href="#七-在web-xml中配置springmvc的核心过滤器-用于在web程序初始化的时候启动springmvc" class="headerlink" title="七:在web.xml中配置springmvc的核心过滤器,用于在web程序初始化的时候启动springmvc"></a>七:在web.xml中配置springmvc的核心过滤器,用于在web程序初始化的时候启动springmvc</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;listener&gt;</span><br><span class="line">    &lt;listener-class&gt;</span><br><span class="line">      org.springframework.web.context.ContextLoaderListener</span><br><span class="line">    &lt;/listener-class&gt;</span><br><span class="line">  &lt;/listener&gt;</span><br><span class="line"></span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;spring-mvc&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</span><br><span class="line"></span><br><span class="line">    &lt;load-on-startup&gt;2&lt;/load-on-startup&gt;</span><br><span class="line">  &lt;/servlet&gt;</span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;spring-mvc&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line">  &lt;/servlet-mapping&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- 解决工程编码过滤器 --&gt;</span><br><span class="line">  &lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;</span><br><span class="line">    &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">      &lt;param-name&gt;encoding&lt;/param-name&gt;</span><br><span class="line">      &lt;param-value&gt;UTF-8&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">  &lt;/filter&gt;</span><br><span class="line">  &lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span><br><span class="line">  &lt;/filter-mapping&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="八-配置spring-mvc-servlet-xml文件"><a href="#八-配置spring-mvc-servlet-xml文件" class="headerlink" title="八:配置spring-mvc-servlet.xml文件"></a>八:配置spring-mvc-servlet.xml文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">	   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">	   xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;</span><br><span class="line">	   xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;</span><br><span class="line">	   xsi:schemaLocation=&quot;</span><br><span class="line">        http://www.springframework.org/schema/beans</span><br><span class="line">        http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">        http://www.springframework.org/schema/context</span><br><span class="line">        http://www.springframework.org/schema/context/spring-context.xsd</span><br><span class="line">        http://www.springframework.org/schema/mvc</span><br><span class="line">  		http://www.springframework.org/schema/mvc/spring-mvc.xsd</span><br><span class="line">        http://www.springframework.org/schema/aop</span><br><span class="line">        http://www.springframework.org/schema/aop/spring-aop.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!--&lt;mvc:annotation-driven/&gt;相当于注册了DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean，配置一些messageconverter。即解决了@Controller注解的使用前提配置。 --&gt;</span><br><span class="line">	&lt;mvc:annotation-driven /&gt;</span><br><span class="line">	&lt;!--&lt;context:annotation-config/&gt;是对包进行扫描，实现注释驱动Bean定义，同时将bean自动注入容器中使用。即解决了@Controller标识的类的bean的注入和使用。 --&gt;</span><br><span class="line">	&lt;context:annotation-config /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;</span><br><span class="line">		&lt;!--前缀 --&gt;</span><br><span class="line">		&lt;property name=&quot;prefix&quot; value=&quot;/view/&quot;/&gt;</span><br><span class="line">		&lt;!--后缀 --&gt;</span><br><span class="line">		&lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt; &lt;!--这里视图技术暂时采用jsp --&gt;</span><br><span class="line">		&lt;property name=&quot;contentType&quot; value=&quot;text/html;charset=UTF-8&quot; /&gt;</span><br><span class="line">		&lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.JstlView&quot; /&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- control类 --&gt;</span><br><span class="line">	&lt;bean id=&quot;index&quot; class=&quot;cn.com.control.HelloSpringMvc&quot;&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="九-编写java代码-实现视图控制器"><a href="#九-编写java代码-实现视图控制器" class="headerlink" title="九:编写java代码,实现视图控制器."></a>九:编写java代码,实现视图控制器.</h1><p>这里是一个简单的页面跳转,使用@Controller注解标识这个类是一个控制器，@RequestMapping注解说明这个类进入的request请求地址，如@RequestMapping(value = “/springmvc”),springmvc相对于strtus框架来说,springmvc是方法级别的拦截，@RequestMapping注解也可以写在方法上.如下面代码:<br>注意:我返回的的数据类型是ModelAndView,这个是springmvc提供的模型和视图的一个解析器，可直接传入视图名，或者携带数据到前端页面new ModelAndView().addObject(“object”, Object);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package cn.com.control;</span><br><span class="line"></span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.web.bind.annotation.*;</span><br><span class="line">import org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line">@Controller</span><br><span class="line">@RequestMapping(value = &quot;/springmvc&quot;)</span><br><span class="line">public class HelloSpringMvc &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value = &quot;/index&quot;)</span><br><span class="line">    public ModelAndView test(ModelAndView mav)&#123;</span><br><span class="line">        mav = new ModelAndView(&quot;index_page&quot;);</span><br><span class="line">        mav.addObject(&quot;name&quot;,&quot;leiYang&quot;);</span><br><span class="line">        return mav;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="十-index-page-jsp代码如下"><a href="#十-index-page-jsp代码如下" class="headerlink" title="十:index_page.jsp代码如下:"></a>十:index_page.jsp代码如下:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;spring mvc&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;你好 $&#123;name&#125;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="十一-如下图配置好tomcat"><a href="#十一-如下图配置好tomcat" class="headerlink" title="十一:如下图配置好tomcat"></a>十一:如下图配置好tomcat</h1><p><img src="https://github.com/ly1836/img/blob/master/springmvc/9.png?raw=true"><br><img src="https://github.com/ly1836/img/blob/master/springmvc/8.png?raw=true"> </p>
+<h1 id="十二-打开浏览器访问地址"><a href="#十二-打开浏览器访问地址" class="headerlink" title="十二:打开浏览器访问地址,"></a>十二:打开浏览器访问地址,</h1><p><img src="https://github.com/ly1836/img/blob/master/springmvc/10.png?raw=true"> </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/springMvc/" rel="tag"># springMvc</a>
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTkyMC8xMjQ1Ng=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/img/portrait.jpg"
+                alt="LeiYang" />
+            
+              <p class="site-author-name" itemprop="name">LeiYang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-新建项目-因为本次版本管理工具采用maven-左侧选中maven-选中-Create-from-archetype-如下图选中cocoon-22-archetype-webapp构建web应用"><span class="nav-number">1.</span> <span class="nav-text">一:新建项目,因为本次版本管理工具采用maven,左侧选中maven,选中[Create from archetype],如下图选中cocoon-22-archetype-webapp构建web应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-填写maven的GroupId和ArtifactId"><span class="nav-number">2.</span> <span class="nav-text">二:填写maven的GroupId和ArtifactId</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-选择当前计算机安装的mavem安装位置及配置文件地址和本地仓库位置"><span class="nav-number">3.</span> <span class="nav-text">三:选择当前计算机安装的mavem安装位置及配置文件地址和本地仓库位置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-在main目录下新建java文件夹，用于存放java代码，在project-structure-中设置java文件夹为Source"><span class="nav-number">4.</span> <span class="nav-text">四:在main目录下新建java文件夹，用于存放java代码，在project structure 中设置java文件夹为Source</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五-在webapp-WEB-INF-下新建spring-mvc-servlet-xml文件-新建view文件夹用于存放视图，当前项目结构如下图"><span class="nav-number">5.</span> <span class="nav-text">五:在webapp/WEB-INF/下新建spring-mvc-servlet.xml文件,新建view文件夹用于存放视图，当前项目结构如下图:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六-在pom-xml中加入springmvc所需的包，如下引完包之后用maven-clear下"><span class="nav-number">6.</span> <span class="nav-text">六:在pom.xml中加入springmvc所需的包，如下引完包之后用maven clear下</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-在project标签下加入如下定义"><span class="nav-number">6.1.</span> <span class="nav-text">(1)在project标签下加入如下定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-在dependencies标签下加入springmvc的所需jar包及jsp标准库和日志库"><span class="nav-number">6.2.</span> <span class="nav-text">(2)在dependencies标签下加入springmvc的所需jar包及jsp标准库和日志库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七-在web-xml中配置springmvc的核心过滤器-用于在web程序初始化的时候启动springmvc"><span class="nav-number">7.</span> <span class="nav-text">七:在web.xml中配置springmvc的核心过滤器,用于在web程序初始化的时候启动springmvc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八-配置spring-mvc-servlet-xml文件"><span class="nav-number">8.</span> <span class="nav-text">八:配置spring-mvc-servlet.xml文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九-编写java代码-实现视图控制器"><span class="nav-number">9.</span> <span class="nav-text">九:编写java代码,实现视图控制器.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十-index-page-jsp代码如下"><span class="nav-number">10.</span> <span class="nav-text">十:index_page.jsp代码如下:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十一-如下图配置好tomcat"><span class="nav-number">11.</span> <span class="nav-text">十一:如下图配置好tomcat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十二-打开浏览器访问地址"><span class="nav-number">12.</span> <span class="nav-text">十二:打开浏览器访问地址,</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LeiYang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("wwk6VhURGXurcp2exFYgAYP8-gzGzoHsz", "f2wj5xrjpk8N6VubYeI3GOcw");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

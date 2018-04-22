@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>LeiYang的博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.leiyang.group/"/>
+  <updated>2018-04-22T06:41:47.302Z</updated>
+  <id>http://www.leiyang.group/</id>
+  
+  <author>
+    <name>LeiYang</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springmvc搭建JavaWeb应用</title>
+    <link href="http://www.leiyang.group/2017/09/27/springmvc-1/"/>
+    <id>http://www.leiyang.group/2017/09/27/springmvc-1/</id>
+    <published>2017-09-27T07:26:44.000Z</published>
+    <updated>2018-04-22T06:41:47.302Z</updated>
+    
+    <summary type="html">
+    
+      &lt;script&gt;
+(function(){
+    var bp = document.createElement(&#39;script&#39;);
+    var curProtocol = window.location.protocol.split(&#39;:&#39;)[0];
+    if (curProtocol === &#39;https&#39;) {
+        bp.src = &#39;https://zz.bdstatic.com/linksubmit/push.js&#39;;        
+    }
+    else {
+        bp.src = &#39;http://push.zhanzhang.baidu.com/push.js&#39;;
+    }
+    var s = document.getElementsByTagName(&quot;script&quot;)[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+&lt;/script&gt;
+&lt;script&gt;
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement(&quot;script&quot;);
+  hm.src = &quot;https://hm.baidu.com/hm.js?a0e8663aecb9b070b35645059a1cebbb&quot;;
+  var s = document.getElementsByTagName(&quot;script&quot;)[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+&lt;/script&gt;
+
+
+&lt;p&gt;本次记录利用springmvc框架搭建web应用，用到的IDE工具为 IntelliJ IDEA 2017.1.4 x64&lt;/p&gt;
+&lt;h1 id=&quot;一-新建项目-因为本次版本管理工具采用maven-左侧选中maven-选中-Create-from-archetype-如下图选中cocoon-22-archetype-webapp构建web应用&quot;&gt;&lt;a href=&quot;#一-新建项目-因为本次版本管理工具采用maven-左侧选中maven-选中-Create-from-archetype-如下图选中cocoon-22-archetype-webapp构建web应用&quot; class=&quot;headerlink&quot; title=&quot;一:新建项目,因为本次版本管理工具采用maven,左侧选中maven,选中[Create from archetype],如下图选中cocoon-22-archetype-webapp构建web应用&quot;&gt;&lt;/a&gt;一:新建项目,因为本次版本管理工具采用maven,左侧选中maven,选中&lt;span style=&quot;background-color: #ccc;&quot;&gt;[Create from archetype]&lt;/span&gt;,如下图选中cocoon-22-archetype-webapp构建web应用&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://www.leiyang.group/tags/java/"/>
+    
+      <category term="springMvc" scheme="http://www.leiyang.group/tags/springMvc/"/>
+    
+      <category term="spring" scheme="http://www.leiyang.group/tags/spring/"/>
+    
+  </entry>
+  
+</feed>
